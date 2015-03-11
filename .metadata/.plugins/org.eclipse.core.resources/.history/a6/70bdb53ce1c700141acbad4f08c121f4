@@ -1,0 +1,24 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Zadanie {
+
+	public static void main(String[] args) throws FileNotFoundException{
+		// TODO Auto-generated method stub
+		String line;
+		String price;
+		int i;
+		
+		File file = new File("Plik z danymi.txt");
+		Scanner scan = new Scanner(file);
+		do{
+		line = scan.nextLine();
+		i = line.indexOf("@amount:");
+		i = i + 8;
+		price = line.substring(i);
+		System.out.println(price);
+		}while(scan.hasNextLine());
+	}
+
+}

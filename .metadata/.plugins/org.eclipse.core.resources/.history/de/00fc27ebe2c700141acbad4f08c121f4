@@ -1,0 +1,33 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Zadanie {
+
+	public static void main(String[] args) throws FileNotFoundException{
+		// TODO Auto-generated method stub
+		String line;
+		String price;
+		double number;
+		int i, j;
+		
+		File file = new File("Plik z danymi.txt");
+		Scanner scan = new Scanner(file);
+		double total = 0;
+		do{
+		line = scan.nextLine();
+		i = line.indexOf("@amount:");
+		j = line.indexOf("PLN");
+		if(i != -1){
+			i = i + 8;
+			price = line.substring(i, j);
+			price = price.replace(",", ".");
+			number = Double.parseDouble(price);
+			total += number;
+			//System.out.println(total);
+		}
+		}while(scan.hasNextLine());
+		System.out.printf("Suma kwot wynosi: %f\n", total);
+	}
+
+}
